@@ -5,7 +5,8 @@
 using namespace std;
 
 int expoFun(int a, int b){ //a = base number, b = power number
- int result1 = 1;
+ // This function is a basic exponent function used later in the program for the power operation in the calculator
+ int result1 = 1; 
  for(int i = 0; i < b; i++){
     result1 = result1 * a;
  }
@@ -13,7 +14,7 @@ int expoFun(int a, int b){ //a = base number, b = power number
 
 }
 
-void equalTo(int a, int b){
+void equalTo(int a, int b){ //checks if two numbers are equal using the modulo operation. really unnecessary. just pretty cool :P
 
 bool isEqualTo;
 if(a % b == 0){
@@ -25,7 +26,7 @@ if(a % b == 0){
 else {
      isEqualTo = false;
      cout << "The numbers are not equal\n";
-}
+} //i had previously chosen to do the more basic method, which just checks if a = b and sets the bool to true or false, just think this is cooler.
 
 }
 
@@ -41,7 +42,7 @@ int main()
     cout << "[2] Compare two numbers\n";
     cout << "[3] Quit the calculator\n";
     cin >> choice;
-    do{
+    do{ //do while loop not yet working.
     if(choice == 1){
     cout << "Enter first number " << endl;
     cin >> num1;
