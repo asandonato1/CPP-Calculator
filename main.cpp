@@ -1,19 +1,9 @@
-
+// CPPMASTERRACE.cpp : Este arquivo contém a função 'main'. A execução do programa começa e termina ali.
+//
 
 #include <iostream>
-
+#include <math.h>
 using namespace std;
-
-int expoFun(int a, int b){ //a = base number, b = power number
- // This function is a basic exponent function used later in the program for the power operation in the calculator
- int result1 = 1; 
- for(int i = 0; i < b; i++){
-    result1 = result1 * a;
- }
- return result1;
-
-}
-
 void equalTo(int a, int b){ //checks if two numbers are equal using the modulo operation. really unnecessary. just pretty cool :P
 
 bool isEqualTo;
@@ -32,65 +22,64 @@ else {
 
 int main()
 {
-    double num1, num2; //numbers to perform op
-    int num3, num4;
     char op;
+    double x;
+    double y;
     double result;
-    int choice;
-    bool calcQuit = false;
+    int calcChoice;
     cout << "[1] Regular calculator\n";
     cout << "[2] Compare two numbers\n";
     cout << "[3] Quit the calculator\n";
-    cin >> choice;
-    do{ //do while loop not yet working.
-    if(choice == 1){
-    cout << "Enter first number " << endl;
-    cin >> num1;
-    cout << "Enter second number " << endl;
-    cin >> num2;
-    cout << "Decide what operation you want to do\n";
+    cin >> calcChoice;
+    if(calcChoice == 1){
+    cout << "The order of input is number 1, number 2, operation.\n";
+    cin >> x;
+    cin >> y;
     cin >> op;
     switch(op){
-case '+':
-    result = num1 + num2;
-    cout << result << endl;
-    calcQuit = false;
+    case '+':
+    result = x + y;
+    cout << result;
     break;
-case '-':
-    result = num1 - num2;
-    cout << result << endl;
-    calcQuit = false;
+    case '-':
+    result = x - y;
+    cout << result;
     break;
-case '*':
-    result = num1 * num2;
-    cout << result << endl;
-    calcQuit = false;
+    case '*':
+    result = x * y;
+    cout << result;
     break;
-case '/':
-    result = num1 / num2;
-    cout << result << endl;
-    calcQuit = false;
+    case '/':
+    result = x / y;
+    cout << result;
     break;
-case '^':
-    cout << expoFun(num1, num2);
-default:
-    //cout << "invalid input type\n";
-    calcQuit = true;
+    case '^':
+    result = pow(x, y);
+    cout << result;
     break;
+    case 'v':
+    result = sqrt(x);
+    double result2;
+    result2 = sqrt(y);
+    cout << result;
+    cout << result2;
+    break;
+    default:
+        cout << "invalid input\n";
+        break;
+
+
+
     }
     }
-if(choice == 2){
+   else if(calcChoice == 2){
+    double num3;
+    double num4;
     cin >> num3;
     cin >> num4;
    equalTo(num3, num4);
 }
-if(choice == 3){
-    calcQuit = true;
-    return 0;
+
 }
-else{
-    return 0;
-}
-    return 0;
-} while(!calcQuit);
-}
+
+
