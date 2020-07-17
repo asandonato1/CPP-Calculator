@@ -1,84 +1,94 @@
-
-
 #include <iostream>
 #include <math.h>
 using namespace std;
-void equalTo(int a, int b){ //checks if two numbers are equal using the modulo operation. really unnecessary. just pretty cool :P
-
-bool isEqualTo;
-if(a % b == 0){
-    isEqualTo = true;
-    if(isEqualTo){
-        cout << "The numbers are equal\n";
+bool isEqual(int n, int k){
+    if(n % k == 0){
+        cout << "The two numbers are equal\n";
+        return  true;
+    }
+    else{
+        cout << "The two numbers are not equal\n";
+        return false;
     }
 }
-else {
-     isEqualTo = false;
-     cout << "The numbers are not equal\n";
-} //i had previously chosen to do the more basic method, which just checks if a = b and sets the bool to true or false, just think this is cooler.
+void triangleSolve(){
+double hyp, angle;
+cout << "Enter hypotenuse and an angle\n";
+cin >> hyp >> angle; //HYP, ANGLE
+if(angle == 30){
+    double unkSide = hyp / 2;
+    cout << "SIN: "<< unkSide << endl;
+    double lastSide = sqrt(pow(unkSide, 2) + pow(hyp, 2));
+    cout << "UNKNOWN SIDE: " << lastSide << endl;
+}
+else if(angle == 45){
+    double unkSide = (hyp * sqrt(2) / 2);
+    cout << unkSide << endl;
+    double lastSide = sqrt(pow(unkSide, 2) + pow(hyp, 2));
+    cout << "UNKNOWN SIDE: " << lastSide << endl;
+}
+else if(angle == 60){
+    double unkSide = (hyp * sqrt(3) / 2);
+    cout << "SIN: " << unkSide << endl;
+    double lastSide = sqrt(pow(unkSide, 2) + pow(hyp, 2));
+    cout << "UNKNOWN SIDE: " << lastSide << endl;
+}
 
 }
+
 
 int main()
 {
-    char op;
-    double x;
-    double y;
-    double result;
-    int calcChoice;
-    cout << "[1] Regular calculator\n";
-    cout << "[2] Compare two numbers\n";
-    cout << "[3] Quit the calculator\n";
-    cin >> calcChoice;
-    if(calcChoice == 1){
-    cout << "The order of input is number 1, number 2, operation.\n";
-    cin >> x;
-    cin >> y;
-    cin >> op;
-    switch(op){
+    int menuChoice;
+    cout << "[1] MAIN CALCULATOR\n";
+    cout << "[2] TRIANGLE SOLVE\n";
+    cin >> menuChoice;
+    if(menuChoice == 1){
+    cout << "Type q or quit to quit at any time\n";
+    for(int i = 1; i>0;){
+        int x, y;
+        cin >> x >> y;
+        if(x == 'q' || y == 'q'){
+            return 0;
+        }
+        char op;
+        cin >> op;
+        switch(op){
     case '+':
-    result = x + y;
-    cout << result;
-    break;
-    case '-':
-    result = x - y;
-    cout << result;
-    break;
-    case '*':
-    result = x * y;
-    cout << result;
-    break;
-    case '/':
-    result = x / y;
-    cout << result;
-    break;
-    case '^':
-    result = pow(x, y);
-    cout << result;
-    break;
-    case 'v':
-    result = sqrt(x);
-    double result2;
-    result2 = sqrt(y);
-    cout << result;
-    cout << result2;
-    break;
-    default:
-        cout << "invalid input\n";
+        cout << x + y;
         break;
+    case '-':
+        cout << x - y;
+        break;
+    case '*':
+        cout << x * y;
+        break;
+    case '/':
+        cout << x / y;
+        break;
+    case '=':
+        isEqual(x, y);
+        break;
+    case '^':
+        cout << pow(x, y);
+        break;
+    case 'v':
+        cout << sqrt(x) << " \n";
+        cout << sqrt(y) << endl;
+        break;
+    case 'q':
+        i--;
+        return 0;
+        break;
+    default:
+        return 0;
+        }
+        }
 
-
-
+return 0;
     }
+    else if(menuChoice == 2){
+        triangleSolve();
     }
-   else if(calcChoice == 2){
-    double num3;
-    double num4;
-    cin >> num3;
-    cin >> num4;
-   equalTo(num3, num4);
+    return 0;
 }
-
-}
-
-
